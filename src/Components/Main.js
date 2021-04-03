@@ -118,6 +118,7 @@ const Main = () => {
                   <LineChart
                     dataTargetCryptoId={dataTargetCryptoId}
                     currency={currency}
+                    palletType={palletType}
                   />
                 </Route>
               </Switch>
