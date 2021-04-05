@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, ButtonGroup } from "@material-ui/core";
+import { Box, Button, ButtonGroup, Typography } from "@material-ui/core";
 import { currencies } from "../../data/currency";
 
 const Currencies = (props) => {
@@ -17,7 +17,7 @@ const Currencies = (props) => {
                 banknote === currency && classes.active_btn
               }`}
             >
-              {banknote}
+             <Typography variant={'body2'}>{banknote}</Typography> 
             </Button>
           );
         })}

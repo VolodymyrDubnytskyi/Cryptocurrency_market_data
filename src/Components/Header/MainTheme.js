@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import Brightness2Icon from "@material-ui/icons/Brightness2";
 import Brightness5Icon from "@material-ui/icons/Brightness5";
+import { ColorizeTwoTone } from "@material-ui/icons";
 const colorPallet = [
   {
     id: 1,
@@ -36,7 +37,6 @@ const MainTheme = (props) => {
   const { setColorTheme, colorTheme, classes } = props;
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
-    console.log(event.currentTarget);
     setAnchorEl(event.currentTarget);
   };
 
@@ -48,7 +48,6 @@ const MainTheme = (props) => {
   return (
     <Box>
       <Button
-        aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
       >
@@ -58,7 +57,7 @@ const MainTheme = (props) => {
         className={classes.color_theme_menu}
         anchorEl={anchorEl}
         keepMounted
-        TransitionComponent={Fade}
+        // TransitionComponent={Fade}
         open={Boolean(anchorEl)}
         onClose={() => handleClose(colorTheme)}
       >
@@ -70,18 +69,18 @@ const MainTheme = (props) => {
               style={{ color: `rgba(${color} 1)` }}
               onClick={() => handleClose(color)}
             >
-              <ListItemIcon>
+              <ListItemIcon className={classes.preference_icon}>
                 {preference === "light" ? (
-                  <Tooltip title={"light-bg"} placement="left-start">
+                  <Tooltip title={"Light Bg"} placement="left-start">
                     <Brightness5Icon fontSize='small'/>
                   </Tooltip>
                 ) : (
-                  <Tooltip title={"dark-bg"} placement="left-start">
+                  <Tooltip title={"Dark Bg"} placement="left-start">
                     <Brightness2Icon fontSize='small'/>
                   </Tooltip>
                 )}
               </ListItemIcon>
-              <Typography variant="inherit" noWrap>
+              <Typography variant="inherit" >
                 {title}
               </Typography>
             </MenuItem>

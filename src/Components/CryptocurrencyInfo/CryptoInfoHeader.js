@@ -15,6 +15,7 @@ const CryptoInfoHeader = (props) => {
     flex_container,
     crypto_img,
     ctypto_name,
+    coin_price_box,
     coin_price,
     price_grow,
     price_decrease,
@@ -28,8 +29,8 @@ const CryptoInfoHeader = (props) => {
         </Typography>
       </Box>
       <Box>
-        <Box className={coin_price}>
-          <Typography variant="h4" component="h4">
+        <Box className={coin_price_box}>
+          <Typography variant="h4" component="h4" className={coin_price}>
             {currencySymbol}
             {market_data.current_price[currency]
               .toString()

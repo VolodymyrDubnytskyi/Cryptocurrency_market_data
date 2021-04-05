@@ -15,9 +15,17 @@ const LineChart = (props) => {
   const [timeInterval, setTimeInterval] = useState(30);
   const [selectedMarketData, setSelectedMarketData] = useState("prices");
   const { currency, palletType, colorTheme } = props;
-  const useStyles = makeStyles((theme)=>lineChartStyles(theme, colorTheme));
+  const useStyles = makeStyles((theme) => lineChartStyles(theme, colorTheme));
   const classes = useStyles();
-  const { darkChartLines, lightChartLines, lightChartLinesYAxis, darkBg, lightBg, lightTextSubtitle, darkTextSubtitle } = colors;
+  const {
+    darkChartLines,
+    lightChartLines,
+    lightChartLinesYAxis,
+    darkBg,
+    lightBg,
+    lightTextSubtitle,
+    darkTextSubtitle,
+  } = colors;
   const getDataOfTargetCrypto = (coin, chartPeriod) => {
     fetch(
       `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=${currency}&days=${chartPeriod}`
@@ -29,7 +37,8 @@ const LineChart = (props) => {
 
   const changeTimeInterval = (newInterval) => setTimeInterval(newInterval);
   const changeSelectedData = (newData) => setSelectedMarketData(newData);
-  const settingColor = (darkColor, lightColor) => palletType === "dark" ? darkColor : lightColor
+  const settingColor = (darkColor, lightColor) =>
+    palletType === "dark" ? darkColor : lightColor;
 
   const options = {
     chart: {
@@ -60,7 +69,7 @@ const LineChart = (props) => {
       tickColor: settingColor(darkChartLines, lightChartLines),
     },
     yAxis: {
-      gridLineColor:settingColor(darkChartLines, lightChartLinesYAxis),
+      gridLineColor: settingColor(darkChartLines, lightChartLinesYAxis),
       title: {
         text: null,
       },
@@ -73,7 +82,7 @@ const LineChart = (props) => {
     series: [
       {
         type: "area",
-        name: 'price',
+        name: "price",
         showInLegend: false,
         data: dataTargetCrypto && dataTargetCrypto[selectedMarketData],
         color: `rgba(${colorTheme} 1)`,
@@ -109,11 +118,12 @@ const LineChart = (props) => {
 
   useEffect(() => {
     const id = localStorage.getItem("id");
-    setDataTargetName(id.charAt(0).toUpperCase() + id.slice(1));
     getDataOfTargetCrypto(id, timeInterval);
-    return currency;
   }, [currency, timeInterval, selectedMarketData]);
-
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+    setDataTargetName(id.charAt(0).toUpperCase() + id.slice(1));
+  }, []);
   return (
     <Box className={classes.dashbord_container}>
       <Box className={classes.dashbord_header}>

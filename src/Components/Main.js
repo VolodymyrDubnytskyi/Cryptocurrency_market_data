@@ -48,7 +48,9 @@ const Main = () => {
       },
     },
   });
-  const useStyles = makeStyles((theme) =>mainStyles(theme, palletType, colorTheme));
+  const useStyles = makeStyles((theme) =>
+    mainStyles(theme, palletType, colorTheme)
+  );
   const classes = useStyles();
 
   const getIdOfTargetCrypto = (id) => {
@@ -81,16 +83,20 @@ const Main = () => {
   };
   const changeTheme = () => {
     setDarkState(!darkState);
-    localStorage.setItem('darkBg', !darkState )
+    localStorage.setItem("darkBg", !darkState);
   };
   useEffect(() => {
-    Chart.defaults.global.defaultFontFamily = "Roboto, sans-serif";
     getDataOfAllCrypto();
+  }, [currency]);
+
+  useEffect(() => {
+    Chart.defaults.global.defaultFontFamily = "Roboto, sans-serif";
     const color = localStorage.getItem("themeColor");
     const darkBg = localStorage.getItem("darkBg");
+    console.log(darkBg);
     color && setColorTheme(color);
-    darkBg && setDarkState(darkBg);
-  }, [currency]);
+    darkBg && setDarkState(JSON.parse(darkBg));
+  }, []);
 
   return (
     <ThemeProvider theme={darkTheme}>

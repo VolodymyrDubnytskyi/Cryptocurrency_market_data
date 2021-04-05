@@ -38,11 +38,16 @@ export const cryptocurrencyInfoStyle = (theme) => {
     coin_info: {
       paddingTop: "2px",
     },
-    coin_price: {
+    coin_price_box: {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "flex-end",
+    },
+    coin_price: {
+      [theme.breakpoints.down("xs")]: {
+        fontSize: '24px'
+      },
     },
     price_grow: {
       color: priceIncrease,

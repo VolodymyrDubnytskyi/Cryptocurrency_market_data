@@ -106,6 +106,9 @@ export const mainStyles = (theme,palletType, colorTheme) => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+    },
+    preference_icon: {
+      minWidth: '30px'
     }
   };
 };
