@@ -2,9 +2,10 @@ import React from "react";
 import { Paper, Typography, Box } from "@material-ui/core";
 
 const CryptoPriceChanges = (props) => {
-  const { coinPriceByPeriod, classes } = props;
+  const { coinPriceByPeriod, classes, matches } = props;
   const {
     price_changes,
+    price_changes_paper,
     price_changes_container,
     price_changes_data,
     price_changes_price,
@@ -12,7 +13,7 @@ const CryptoPriceChanges = (props) => {
     price_grow,
   } = classes;
   return (
-    <Paper>
+    <Paper className={price_changes_paper}>
       <Box className={price_changes_container}>
         {coinPriceByPeriod &&
           coinPriceByPeriod.map((item) => {
@@ -23,6 +24,7 @@ const CryptoPriceChanges = (props) => {
                   {period}
                 </Typography>
                 <Typography
+                variant={matches ? 'body2' : 'body1'}
                   className={`
                   ${price_changes_data} 
                   ${price_changes_price} 

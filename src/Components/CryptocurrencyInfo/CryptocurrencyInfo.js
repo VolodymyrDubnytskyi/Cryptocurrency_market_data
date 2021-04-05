@@ -9,7 +9,7 @@ import {
   getCoinPriceChanges,
 } from "../../data/coinIfno";
 import { cryptocurrencyInfoStyle } from "./styles/cryptocurrencyInfoStyle";
-import BackToCtyproList from "./BackToCtyproList";
+import BackToCryproList from "./BackToCryproList";
 
 const CryptocurrencyInfo = (props) => {
   const [data, setData] = useState("");
@@ -17,7 +17,7 @@ const CryptocurrencyInfo = (props) => {
   const [coinPriceByPeriod, setCoinPriceByPeriod] = useState("");
   const { image, name, symbol, market_data } = data;
   const { palletType, currency, currencySymbol } = props;
-  const useStyles = makeStyles(cryptocurrencyInfoStyle);
+  const useStyles = makeStyles((theme) =>cryptocurrencyInfoStyle(theme));
   const classes = useStyles();
 
   const getDataOfTargetCrypto = (id) => {
@@ -56,7 +56,7 @@ const CryptocurrencyInfo = (props) => {
   }, [currency]);
   return (
     <Box component="section" className={classes.flex_container} width={"100%"}>
-      <BackToCtyproList classes={classes} palletType={palletType} />
+      <BackToCryproList classes={classes} palletType={palletType} />
       {data && (
         <>
           <Box className={classes.market_data_header}>

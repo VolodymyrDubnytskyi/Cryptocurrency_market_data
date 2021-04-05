@@ -1,5 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery  from "@material-ui/core/useMediaQuery";
 import CryptoPriceChanges from "./CryptoPriceChanges";
 
 const CryptoInfoMarketData = (props) => {
@@ -10,6 +12,8 @@ const CryptoInfoMarketData = (props) => {
     coin_info_container,
     coin_info,
   } = classes;
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('xs'))
   return (
     <Box className={market_data_container}>
       <Box className={market_data}>
@@ -20,11 +24,11 @@ const CryptoInfoMarketData = (props) => {
               <Box key={id} className={coin_info_container}>
                 {data && (
                   <>
-                    <Typography variant="h6" component="h2">
+                    <Typography variant={matches ? 'subtitle1' : 'h6'} component="h2">
                       {name}
                     </Typography>
                     <Typography
-                      variant="body2"
+                      variant={matches ? 'caption' : 'body2'}
                       component="p"
                       className={coin_info}
                     >
@@ -40,6 +44,7 @@ const CryptoInfoMarketData = (props) => {
       <CryptoPriceChanges
         coinPriceByPeriod={coinPriceByPeriod}
         classes={classes}
+        matches={matches}
       />
     </Box>
   );

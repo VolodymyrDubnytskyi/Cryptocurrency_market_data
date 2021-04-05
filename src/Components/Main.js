@@ -9,8 +9,11 @@ import Currencies from "./Currencies/Currencies";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Box, CircularProgress, Typography } from "@material-ui/core";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  createMuiTheme,
+  ThemeProvider,
+  makeStyles,
+} from "@material-ui/core/styles";
 import { mainStyles } from "./mainStyles";
 import { cryptoListUrl } from "../data/cryptoListUrl";
 import { colors } from "../data/colors";
@@ -21,6 +24,7 @@ const Main = () => {
   const [fixedDataTargetCrypto, setFixedDataTargetCrypto] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [darkState, setDarkState] = useState(false);
+  const [colorTheme, setColorTheme] = useState(`145, 100, 223,`);
   const [currency, setСurrency] = useState("usd");
   const [currencySymbol, setCurrencySymbol] = useState("$");
   const palletType = darkState ? "dark" : "light";
@@ -29,11 +33,22 @@ const Main = () => {
     palette: {
       type: palletType,
       primary: {
-        main: main(1),
+        // main: main(1),
+        main: `rgba(${colorTheme} 1)`,
+      },
+    },
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        tablet: 700,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
       },
     },
   });
-  const useStyles = makeStyles(mainStyles(palletType));
+  const useStyles = makeStyles((theme) =>mainStyles(theme, palletType, colorTheme));
   const classes = useStyles();
 
   const getIdOfTargetCrypto = (id) => {
@@ -66,12 +81,17 @@ const Main = () => {
   };
   const changeTheme = () => {
     setDarkState(!darkState);
+    localStorage.setItem('darkBg', !darkState )
   };
   useEffect(() => {
     Chart.defaults.global.defaultFontFamily = "Roboto, sans-serif";
     getDataOfAllCrypto();
+    const color = localStorage.getItem("themeColor");
+    const darkBg = localStorage.getItem("darkBg");
+    color && setColorTheme(color);
+    darkBg && setDarkState(darkBg);
   }, [currency]);
-  console.log(dataListCrypto);
+
   return (
     <ThemeProvider theme={darkTheme}>
       <Router>
@@ -82,6 +102,8 @@ const Main = () => {
               classes={classes}
               changeTheme={changeTheme}
               title={"DonQuixote"}
+              setColorTheme={setColorTheme}
+              colorTheme={colorTheme}
             />
             <Currencies
               classes={classes}
@@ -119,11 +141,11 @@ const Main = () => {
                     dataTargetCryptoId={dataTargetCryptoId}
                     currency={currency}
                     palletType={palletType}
+                    colorTheme={colorTheme}
                   />
                 </Route>
               </Switch>
             </Box>
-            {/* <Footer classes={classes}/> */}
           </Box>
         ) : (
           <CircularProgress className={classes.progresCircular} />
