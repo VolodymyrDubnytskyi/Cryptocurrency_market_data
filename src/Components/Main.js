@@ -4,7 +4,7 @@ import LineChart from "./LineChart/LineChart";
 import CryptocurrencyTable from "./CryptocurrencyTable/CryptocurrencyTable";
 import CryptocurrencyInfo from "./CryptocurrencyInfo/CryptocurrencyInfo";
 import SearchInput from "./SearchCrypto/SearchInput";
-import Header from "./Header/Header";
+import Navbar from "./Navbar/Navbar";
 import Currencies from "./Currencies/Currencies";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -104,12 +104,12 @@ const Main = () => {
         {dataListCrypto ? (
           <Box className={classes.main}>
             <CssBaseline />
-            <Header
-              classes={classes}
-              changeTheme={changeTheme}
+            <Navbar
               title={"DonQuixote"}
-              setColorTheme={setColorTheme}
+              classes={classes}
               colorTheme={colorTheme}
+              changeTheme={changeTheme}
+              setColorTheme={setColorTheme}
             />
             <Currencies
               classes={classes}

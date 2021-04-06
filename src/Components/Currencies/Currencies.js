@@ -4,8 +4,9 @@ import { currencies } from "../../data/currency";
 
 const Currencies = (props) => {
   const { classes, changeCurrency, currency } = props;
+  const {currency_shortcut, currency_btn_container, currency_btn, active_btn} = classes;
   return (
-    <Box className={classes.currency_btn_container}>
+    <Box className={currency_btn_container}>
       <ButtonGroup color="primary" aria-label="outlined primary button group">
         {currencies.map((item) => {
           const { id, banknote, symbol } = item;
@@ -13,11 +14,11 @@ const Currencies = (props) => {
             <Button
               key={id}
               onClick={() => changeCurrency(banknote, symbol)}
-              className={`${classes.currency_btn} ${
-                banknote === currency && classes.active_btn
+              className={`${currency_btn} ${
+                banknote === currency && active_btn
               }`}
             >
-             <Typography variant={'body2'}>{banknote}</Typography> 
+             <Typography variant={'body2'} className={currency_shortcut}>{banknote}</Typography> 
             </Button>
           );
         })}

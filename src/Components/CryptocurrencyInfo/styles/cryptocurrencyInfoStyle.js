@@ -89,6 +89,10 @@ export const cryptocurrencyInfoStyle = (theme) => {
       [theme.breakpoints.down("lg")]: {
         padding: "5px 16px",
       },
+      [theme.breakpoints.down("xs")]: {
+        padding: "5px 7px",
+        fontSize: '12px'
+      },
     },
     price_changes_price: {
       borderTop: "1px solid #dee2e6",
