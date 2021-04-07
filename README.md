@@ -1,7 +1,6 @@
 # Cryptocurrency prices
 
 ![GitHub Logo](/src/assets/readMeImg.jpg)
-Format: ![Alt Text](url)
 
 ## To open the project, please act as advised below:
 1. **clone the reposetory** to your local folder using the command **"https://github.com/VolodymyrDubnytskyi/Cryptocurrency_market_data.git"** in your terminal;
