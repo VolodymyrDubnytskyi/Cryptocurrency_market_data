@@ -2,7 +2,7 @@ import React from "react";
 import ColorTheme from "./NavabarComponents/ColorTheme/ColorTheme";
 import BgTheme from "./NavabarComponents/BgTheme";
 import PageName from "./NavabarComponents/PageName";
-import { Box, Paper, Typography } from "@material-ui/core";
+import { Box, Paper } from "@material-ui/core";
 
 const Navbar = (props) => {
   const { classes, changeTheme, title, setColorTheme, colorTheme } = props;

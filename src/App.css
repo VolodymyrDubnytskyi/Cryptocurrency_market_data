@@ -1,29 +1,5 @@
-:root {
-  --mainColor: '#9164DF';
-  --accentColor: '#E5D397';
-  --darkBg: rgb(60, 57, 64);
-}
-
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.cryptocurrency_container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  max-width: 1675px;
-  width: 100%;
-}
-.coin_info_container{
-  padding: 5px 0;
-}
-.market_data_header{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }

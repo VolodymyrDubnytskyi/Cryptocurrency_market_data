@@ -1,4 +1,4 @@
-import {colors} from '../../../data/colors';
+import {colors} from '../../data/colors';
 const {priceIncrease, priceReduction} = colors;
 export const cryptocurrencyTableStyle = {
     cryptoData: { 
@@ -9,10 +9,10 @@ export const cryptocurrencyTableStyle = {
       width: "100%",
       margin: "auto",
     },
-    ctypto_name: {
+    ctypto_table_name: {
       marginLeft: "50px",
     },
-    crypto_symbol: {
+    crypto_table_symbol: {
       flexGrow: "1",
       display: "flex",
       justifyContent: "flex-end",

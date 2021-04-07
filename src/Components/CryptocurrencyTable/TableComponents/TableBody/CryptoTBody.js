@@ -1,5 +1,5 @@
 import React from "react";
-import TBodyRow from "./TBodyRow";
+import CryptoTBodyRow from "./CryptoTBodyRow";
 import { TableBody } from "@material-ui/core";
 
 const CryptoTBody = (props) => {
@@ -14,7 +14,7 @@ const CryptoTBody = (props) => {
       {rowsafterPaginationAndSorting().map((crypto) => {
         const {id} = crypto;
           return (
-            <TBodyRow
+            <CryptoTBodyRow
               key={id}
               crypto={crypto}
               classes={classes}

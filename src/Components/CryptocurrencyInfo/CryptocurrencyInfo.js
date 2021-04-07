@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import CryptoInfoHeader from "./CryptoInfoHeader";
-import CryptoInfoMarketData from "./CryptoInfoMarketData";
+import CryptoInfoHeader from "./CryptoInfoComponents/CryptoInfoHeader/CryptoInfoHeader";
+import CryptoInfoMarketData from "./CryptoInfoComponents/CryptoInfoMarketData/CryptoInfoMarketData";
 import {
   setingUrl,
   getCoinInfo,
   getCoinPriceChanges,
 } from "../../data/coinIfno";
-import { cryptocurrencyInfoStyle } from "./styles/cryptocurrencyInfoStyle";
 import BackToCryproList from "./BackToCryproList";
 
 const CryptocurrencyInfo = (props) => {
   const [data, setData] = useState("");
   const [coinInfo, setCoinInfo] = useState("");
   const [coinPriceByPeriod, setCoinPriceByPeriod] = useState("");
-  const { image, name, symbol, market_data } = data;
-  const { palletType, currency, currencySymbol } = props;
-  const useStyles = makeStyles((theme) =>cryptocurrencyInfoStyle(theme));
-  const classes = useStyles();
+  const { market_data } = data;
+  const { palletType, currency, currencySymbol, classes } = props;
+  const converData = (data) => data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
   const getDataOfTargetCrypto = (id) => {
     fetch(setingUrl(id))
@@ -27,22 +24,12 @@ const CryptocurrencyInfo = (props) => {
         setData(data);
         const { market_data } = data;
         const coinData = getCoinInfo(
-          market_data.market_cap[currency]
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-          market_data.low_24h[currency]
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-          market_data.high_24h[currency]
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-          market_data.total_volume[currency]
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+          converData(market_data.market_cap[currency]),
+          converData(market_data.low_24h[currency]),
+          converData(market_data.high_24h[currency]),
+          converData(market_data.total_volume[currency]),
           market_data.max_supply &&
-            market_data.max_supply
-              .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          converData(market_data.max_supply),
         );
         const coinPriceChanges = getCoinPriceChanges(market_data, currency);
         setCoinPriceByPeriod(coinPriceChanges);
@@ -62,10 +49,7 @@ const CryptocurrencyInfo = (props) => {
           <Box className={classes.market_data_header}>
             <CryptoInfoHeader
               classes={classes}
-              market_data={market_data}
-              image={image}
-              name={name}
-              symbol={symbol}
+              data={data}
               currency={currency}
               currencySymbol={currencySymbol}
             />

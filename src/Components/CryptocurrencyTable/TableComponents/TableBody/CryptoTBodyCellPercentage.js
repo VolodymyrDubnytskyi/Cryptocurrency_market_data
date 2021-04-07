@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableCell } from '@material-ui/core';
 
-const TbodyCellPercentage =(props) => {
+const CryptoTBodyCellPercentage =(props) => {
 const {price_change, classes} = props;
 const {price_up, price_down } = classes;
     return (
@@ -16,4 +16,4 @@ const {price_up, price_down } = classes;
       </TableCell>
     )
 }
-export default TbodyCellPercentage;
+export default CryptoTBodyCellPercentage;

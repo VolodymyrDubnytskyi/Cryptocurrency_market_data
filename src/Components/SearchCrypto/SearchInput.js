@@ -3,8 +3,9 @@ import { Box, TextField } from "@material-ui/core";
 
 const SearchInput = (props) => {
   const { searchAndFilter, classes } = props;
+  const {search_input_container} = classes;
   return (
-    <Box className={classes.search_input_container}>
+    <Box className={search_input_container}>
       <TextField
         id="outlined-basic"
         label="Еnter a name"

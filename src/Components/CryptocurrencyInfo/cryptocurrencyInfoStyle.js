@@ -1,4 +1,4 @@
-import { colors } from "../../../data/colors";
+import { colors } from "../../data/colors";
 const { priceIncrease, priceReduction } = colors;
 
 export const cryptocurrencyInfoStyle = (theme) => {

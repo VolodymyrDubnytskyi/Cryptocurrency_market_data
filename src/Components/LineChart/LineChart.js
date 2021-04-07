@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import BtnGroup from "./BtnGroup";
+import LineChartBtnGroup from "./LineChartBtnGroup";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { Box, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { lineChartStyles } from "./styles/lineChartStyles";
+import { lineChartStyles } from "./lineChartStyles";
 import { colors } from "../../data/colors";
 import { timeIntervalPriceChange } from "../../data/timeIntervalPriceChange";
 import { lineChartData } from "../../data/lineChartData";
@@ -127,13 +127,13 @@ const LineChart = (props) => {
   return (
     <Box className={classes.dashbord_container}>
       <Box className={classes.dashbord_header}>
-        <BtnGroup
+        <LineChartBtnGroup
           callback={changeTimeInterval}
           listOfItems={timeIntervalPriceChange}
           comparison={timeInterval}
           classes={classes}
         />
-        <BtnGroup
+        <LineChartBtnGroup
           callback={changeSelectedData}
           listOfItems={lineChartData}
           comparison={selectedMarketData}

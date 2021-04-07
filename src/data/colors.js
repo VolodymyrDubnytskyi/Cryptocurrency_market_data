@@ -1,8 +1,6 @@
-let color = '145, 100, 223,'
 export const colors = {
   main: function useColor(alpha) {
-    return `rgb(${color} ${alpha})`;
-    // return `rgb(176, 98, 59, ${alpha})`;
+    return `rgb(145, 100, 223, ${alpha})`;
   },
   priceIncrease: "rgb(78, 175, 89)",
   priceReduction: "rgb(227, 82, 65)",

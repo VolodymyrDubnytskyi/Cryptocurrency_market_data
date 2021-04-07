@@ -1,8 +1,9 @@
 import React from "react";
 import { Button, ButtonGroup } from "@material-ui/core";
 
-const BtnGroup = (props) => {
+const LineChartBtnGroup = (props) => {
   const { comparison, classes, callback, listOfItems } = props;
+  const {currency_btn, active_btn} = classes;
   return (
     <ButtonGroup color="primary" aria-label="outlined primary button group">
       {listOfItems.map((item) => {
@@ -10,8 +11,8 @@ const BtnGroup = (props) => {
         return (
           <Button
             key={id}
-            className={`${classes.currency_btn} ${
-              comparison === details && classes.active_btn
+            className={`${currency_btn} ${
+              comparison === details && active_btn
             }`}
             onClick={() => callback(details)}
           >
@@ -22,4 +23,4 @@ const BtnGroup = (props) => {
     </ButtonGroup>
   );
 };
-export default BtnGroup;
+export default LineChartBtnGroup;

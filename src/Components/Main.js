@@ -8,7 +8,7 @@ import Navbar from "./Navbar/Navbar";
 import Currencies from "./Currencies/Currencies";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Box, CircularProgress, Typography } from "@material-ui/core";
+import { Box, CircularProgress } from "@material-ui/core";
 import {
   createMuiTheme,
   ThemeProvider,
@@ -16,7 +16,7 @@ import {
 } from "@material-ui/core/styles";
 import { mainStyles } from "./mainStyles";
 import { cryptoListUrl } from "../data/cryptoListUrl";
-import { colors } from "../data/colors";
+import MainHeading from "./MainHeading";
 
 const Main = () => {
   const [dataListCrypto, setDataListCrypto] = useState(null);
@@ -28,25 +28,13 @@ const Main = () => {
   const [currency, setСurrency] = useState("usd");
   const [currencySymbol, setCurrencySymbol] = useState("$");
   const palletType = darkState ? "dark" : "light";
-  const { main } = colors;
   const darkTheme = createMuiTheme({
     palette: {
       type: palletType,
       primary: {
-        // main: main(1),
         main: `rgba(${colorTheme} 1)`,
       },
-    },
-    breakpoints: {
-      values: {
-        xs: 0,
-        sm: 600,
-        tablet: 700,
-        md: 960,
-        lg: 1280,
-        xl: 1920,
-      },
-    },
+    }
   });
   const useStyles = makeStyles((theme) =>
     mainStyles(theme, palletType, colorTheme)
@@ -93,7 +81,6 @@ const Main = () => {
     Chart.defaults.global.defaultFontFamily = "Roboto, sans-serif";
     const color = localStorage.getItem("themeColor");
     const darkBg = localStorage.getItem("darkBg");
-    console.log(darkBg);
     color && setColorTheme(color);
     darkBg && setDarkState(JSON.parse(darkBg));
   }, []);
@@ -119,19 +106,17 @@ const Main = () => {
             <Box className={classes.cryptocurrency_container}>
               <Switch>
                 <Route exact path="/">
-                  <Typography
-                    variant="h4"
-                    component="h1"
-                    className={classes.main_heading}
-                  >
-                    Cryptocurrency prices
-                  </Typography>
+                  <MainHeading
+                    title={"Cryptocurrency prices"}
+                    classes={classes}
+                  />
                   <SearchInput
                     searchValue={searchValue}
                     searchAndFilter={searchAndFilter}
                     classes={classes}
                   />
                   <CryptocurrencyTable
+                    classes={classes}
                     data={dataListCrypto}
                     getIdOfTargetCrypto={getIdOfTargetCrypto}
                     currencySymbol={currencySymbol}
@@ -139,6 +124,7 @@ const Main = () => {
                 </Route>
                 <Route path={"/dashbord"}>
                   <CryptocurrencyInfo
+                  classes={classes}
                     palletType={palletType}
                     currency={currency}
                     currencySymbol={currencySymbol}
@@ -154,7 +140,9 @@ const Main = () => {
             </Box>
           </Box>
         ) : (
-          <CircularProgress className={classes.progresCircular} />
+          <Box>
+            <CircularProgress className={classes.progresCircular} />
+          </Box>
         )}
       </Router>
     </ThemeProvider>
