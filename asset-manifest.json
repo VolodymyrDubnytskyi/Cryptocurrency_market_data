@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/VolodymyrDubnytskyi/Cryptocurrency_market_data.git/static/css/main.e58572e3.chunk.css",
-    "main.js": "/VolodymyrDubnytskyi/Cryptocurrency_market_data.git/static/js/main.18945f1d.chunk.js",
-    "main.js.map": "/VolodymyrDubnytskyi/Cryptocurrency_market_data.git/static/js/main.18945f1d.chunk.js.map",
-    "runtime-main.js": "/VolodymyrDubnytskyi/Cryptocurrency_market_data.git/static/js/runtime-main.083c3691.js",
-    "runtime-main.js.map": "/VolodymyrDubnytskyi/Cryptocurrency_market_data.git/static/js/runtime-main.083c3691.js.map",
-    "static/js/2.ee894e3b.chunk.js": "/VolodymyrDubnytskyi/Cryptocurrency_market_data.git/static/js/2.ee894e3b.chunk.js",
-    "static/js/2.ee894e3b.chunk.js.map": "/VolodymyrDubnytskyi/Cryptocurrency_market_data.git/static/js/2.ee894e3b.chunk.js.map",
-    "index.html": "/VolodymyrDubnytskyi/Cryptocurrency_market_data.git/index.html",
-    "static/css/main.e58572e3.chunk.css.map": "/VolodymyrDubnytskyi/Cryptocurrency_market_data.git/static/css/main.e58572e3.chunk.css.map",
-    "static/js/2.ee894e3b.chunk.js.LICENSE.txt": "/VolodymyrDubnytskyi/Cryptocurrency_market_data.git/static/js/2.ee894e3b.chunk.js.LICENSE.txt"
+    "main.css": "/Cryptocurrency_market_data/static/css/main.e58572e3.chunk.css",
+    "main.js": "/Cryptocurrency_market_data/static/js/main.18945f1d.chunk.js",
+    "main.js.map": "/Cryptocurrency_market_data/static/js/main.18945f1d.chunk.js.map",
+    "runtime-main.js": "/Cryptocurrency_market_data/static/js/runtime-main.0491e6e2.js",
+    "runtime-main.js.map": "/Cryptocurrency_market_data/static/js/runtime-main.0491e6e2.js.map",
+    "static/js/2.ee894e3b.chunk.js": "/Cryptocurrency_market_data/static/js/2.ee894e3b.chunk.js",
+    "static/js/2.ee894e3b.chunk.js.map": "/Cryptocurrency_market_data/static/js/2.ee894e3b.chunk.js.map",
+    "index.html": "/Cryptocurrency_market_data/index.html",
+    "static/css/main.e58572e3.chunk.css.map": "/Cryptocurrency_market_data/static/css/main.e58572e3.chunk.css.map",
+    "static/js/2.ee894e3b.chunk.js.LICENSE.txt": "/Cryptocurrency_market_data/static/js/2.ee894e3b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.083c3691.js",
+    "static/js/runtime-main.0491e6e2.js",
     "static/js/2.ee894e3b.chunk.js",
     "static/css/main.e58572e3.chunk.css",
     "static/js/main.18945f1d.chunk.js"
