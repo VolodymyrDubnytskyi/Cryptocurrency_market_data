@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Cryptocurrency_market_data/static/css/main.e58572e3.chunk.css",
-    "main.js": "/Cryptocurrency_market_data/static/js/main.b7365143.chunk.js",
-    "main.js.map": "/Cryptocurrency_market_data/static/js/main.b7365143.chunk.js.map",
-    "runtime-main.js": "/Cryptocurrency_market_data/static/js/runtime-main.0491e6e2.js",
-    "runtime-main.js.map": "/Cryptocurrency_market_data/static/js/runtime-main.0491e6e2.js.map",
-    "static/js/2.ee894e3b.chunk.js": "/Cryptocurrency_market_data/static/js/2.ee894e3b.chunk.js",
-    "static/js/2.ee894e3b.chunk.js.map": "/Cryptocurrency_market_data/static/js/2.ee894e3b.chunk.js.map",
-    "index.html": "/Cryptocurrency_market_data/index.html",
-    "static/css/main.e58572e3.chunk.css.map": "/Cryptocurrency_market_data/static/css/main.e58572e3.chunk.css.map",
-    "static/js/2.ee894e3b.chunk.js.LICENSE.txt": "/Cryptocurrency_market_data/static/js/2.ee894e3b.chunk.js.LICENSE.txt"
+    "main.css": "/cryptocurrency_market_data/static/css/main.e58572e3.chunk.css",
+    "main.js": "/cryptocurrency_market_data/static/js/main.b7365143.chunk.js",
+    "main.js.map": "/cryptocurrency_market_data/static/js/main.b7365143.chunk.js.map",
+    "runtime-main.js": "/cryptocurrency_market_data/static/js/runtime-main.07ac44d8.js",
+    "runtime-main.js.map": "/cryptocurrency_market_data/static/js/runtime-main.07ac44d8.js.map",
+    "static/js/2.ee894e3b.chunk.js": "/cryptocurrency_market_data/static/js/2.ee894e3b.chunk.js",
+    "static/js/2.ee894e3b.chunk.js.map": "/cryptocurrency_market_data/static/js/2.ee894e3b.chunk.js.map",
+    "index.html": "/cryptocurrency_market_data/index.html",
+    "static/css/main.e58572e3.chunk.css.map": "/cryptocurrency_market_data/static/css/main.e58572e3.chunk.css.map",
+    "static/js/2.ee894e3b.chunk.js.LICENSE.txt": "/cryptocurrency_market_data/static/js/2.ee894e3b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.0491e6e2.js",
+    "static/js/runtime-main.07ac44d8.js",
     "static/js/2.ee894e3b.chunk.js",
     "static/css/main.e58572e3.chunk.css",
     "static/js/main.b7365143.chunk.js"
