@@ -26,14 +26,6 @@ const LineChart = (props) => {
     lightTextSubtitle,
     darkTextSubtitle,
   } = colors;
-  const getDataOfTargetCrypto = (coin, chartPeriod) => {
-    fetch(
-      `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=${currency}&days=${chartPeriod}`
-    )
-      .then((res) => res.json())
-      .then((data) => setDataTargetCrypto(data))
-      .catch((error) => console.log(error));
-  };
 
   const changeTimeInterval = (newInterval) => setTimeInterval(newInterval);
   const changeSelectedData = (newData) => setSelectedMarketData(newData);
@@ -118,6 +110,14 @@ const LineChart = (props) => {
 
   useEffect(() => {
     const id = localStorage.getItem("id");
+    const getDataOfTargetCrypto = (coin, chartPeriod) => {
+      fetch(
+        `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=${currency}&days=${chartPeriod}`
+      )
+        .then((res) => res.json())
+        .then((data) => setDataTargetCrypto(data))
+        .catch((error) => console.log(error));
+    };
     getDataOfTargetCrypto(id, timeInterval);
   }, [currency, timeInterval, selectedMarketData]);
   useEffect(() => {

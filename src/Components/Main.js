@@ -19,7 +19,7 @@ import { cryptoListUrl } from "../data/cryptoListUrl";
 import MainHeading from "./MainHeading";
 
 const Main = () => {
-  const [dataListCrypto, setDataListCrypto] = useState(null);
+  const [dataListCrypto, setDataListCrypto] = useState([]);
   const [dataTargetCryptoId, setDataTargetCryptoId] = useState("");
   const [fixedDataTargetCrypto, setFixedDataTargetCrypto] = useState("");
   const [searchValue, setSearchValue] = useState("");
@@ -34,7 +34,7 @@ const Main = () => {
       primary: {
         main: `rgba(${colorTheme} 1)`,
       },
-    }
+    },
   });
   const useStyles = makeStyles((theme) =>
     mainStyles(theme, palletType, colorTheme)
@@ -44,16 +44,6 @@ const Main = () => {
   const getIdOfTargetCrypto = (id) => {
     setDataTargetCryptoId(id);
     localStorage.setItem("id", id);
-  };
-
-  const getDataOfAllCrypto = () => {
-    fetch(cryptoListUrl(currency))
-      .then((res) => res.json())
-      .then((data) => {
-        setDataListCrypto(data);
-        setFixedDataTargetCrypto(data);
-      })
-      .catch((error) => console.log(error));
   };
 
   const searchAndFilter = (e) => {
@@ -74,6 +64,16 @@ const Main = () => {
     localStorage.setItem("darkBg", !darkState);
   };
   useEffect(() => {
+    const getDataOfAllCrypto = () => {
+      fetch(cryptoListUrl(currency))
+        .then((res) => res.json())
+        .then((data) => {
+          setDataListCrypto(data);
+          setFixedDataTargetCrypto(data);
+        })
+        // .catch((error) => {
+        // });
+    };
     getDataOfAllCrypto();
   }, [currency]);
 
@@ -105,7 +105,7 @@ const Main = () => {
             />
             <Box className={classes.cryptocurrency_container}>
               <Switch>
-                <Route exact path="/">
+                <Route exact path="/cryptocurrency_market_data">
                   <MainHeading
                     title={"Cryptocurrency prices"}
                     classes={classes}
@@ -124,7 +124,7 @@ const Main = () => {
                 </Route>
                 <Route path={"/dashbord"}>
                   <CryptocurrencyInfo
-                  classes={classes}
+                    classes={classes}
                     palletType={palletType}
                     currency={currency}
                     currencySymbol={currencySymbol}

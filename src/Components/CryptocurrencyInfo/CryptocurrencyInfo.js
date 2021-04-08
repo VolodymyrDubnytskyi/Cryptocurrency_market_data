@@ -17,28 +17,28 @@ const CryptocurrencyInfo = (props) => {
   const { palletType, currency, currencySymbol, classes } = props;
   const converData = (data) => data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
-  const getDataOfTargetCrypto = (id) => {
-    fetch(setingUrl(id))
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        const { market_data } = data;
-        const coinData = getCoinInfo(
-          converData(market_data.market_cap[currency]),
-          converData(market_data.low_24h[currency]),
-          converData(market_data.high_24h[currency]),
-          converData(market_data.total_volume[currency]),
-          market_data.max_supply &&
-          converData(market_data.max_supply),
-        );
-        const coinPriceChanges = getCoinPriceChanges(market_data, currency);
-        setCoinPriceByPeriod(coinPriceChanges);
-        setCoinInfo(coinData);
-      })
-      .catch((error) => console.log(error));
-  };
   useEffect(() => {
     const id = localStorage.getItem("id");
+    const getDataOfTargetCrypto = (id) => {
+      fetch(setingUrl(id))
+        .then((res) => res.json())
+        .then((data) => {
+          setData(data);
+          const { market_data } = data;
+          const coinData = getCoinInfo(
+            converData(market_data.market_cap[currency]),
+            converData(market_data.low_24h[currency]),
+            converData(market_data.high_24h[currency]),
+            converData(market_data.total_volume[currency]),
+            market_data.max_supply &&
+            converData(market_data.max_supply),
+          );
+          const coinPriceChanges = getCoinPriceChanges(market_data, currency);
+          setCoinPriceByPeriod(coinPriceChanges);
+          setCoinInfo(coinData);
+        })
+        .catch((error) => console.log(error));
+    };
     getDataOfTargetCrypto(id);
   }, [currency]);
   return (
