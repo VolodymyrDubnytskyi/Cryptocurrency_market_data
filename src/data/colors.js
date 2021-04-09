@@ -11,4 +11,6 @@ export const colors = {
   darkTextSubtitle: 'rgb(112,112,115, 0.6)',
   lightChartLines: '#ccd6eb',
   lightChartLinesYAxis: '#e6e6e6',
+  white: '#fff',
+  darkThemeAcentBg: '#424242'
 };

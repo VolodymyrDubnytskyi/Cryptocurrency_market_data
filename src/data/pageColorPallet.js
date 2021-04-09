@@ -1,20 +1,32 @@
 export const pageColorPallet =  [
     {
       id: 1,
-      title: "rgb(145, 100, 223)",
+      title: "Medium Purple",
       color: "145, 100, 223,",
-      preference: "light",
+      preference: "dark",
     },
     {
       id: 2,
-      title: "rgb(50, 100, 130)",
+      title: "Tulip Tree",
+      color: "222, 173, 60,",
+      preference: "dark",
+    },
+    {
+      id: 3,
+      title: "Monte Carlo",
+      color: "117, 203, 189,",
+      preference: "dark",
+    },
+    {
+      id: 4,
+      title: "Astral",
       color: "50, 100, 130,",
       preference: "light",
     },
     {
-      id: 3,
-      title: "rgb(222, 173, 60)",
-      color: "222, 173, 60,",
-      preference: "dark",
+      id: 5,
+      title: "Suva Grey",
+      color: "144, 144, 144,",
+      preference: "light",
     },
   ];

@@ -1,4 +1,4 @@
-export const styleCurrencies = (theme, mainColor) => {
+export const styleCurrencies = () => {
   return {
     currency_btn_container: {
       width: "100%",
@@ -6,19 +6,6 @@ export const styleCurrencies = (theme, mainColor) => {
       display: "flex",
       justifyContent: "flex-end",
       alignItems: "center",
-    },
-    currency_btn: {
-      "&:hover": {
-        borderColor: mainColor,
-      },
-      [theme.breakpoints.down("xs")]: {
-        padding: "5px 10px",
-      },
-    },
-    currency_shortcut: {
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "12px",
-      },
-    },
+    }
   };
 };

@@ -3,8 +3,6 @@ import LineChartBtnGroup from "./LineChartBtnGroup";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { Box, Paper } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import { lineChartStyles } from "./lineChartStyles";
 import { colors } from "../../data/colors";
 import { timeIntervalPriceChange } from "../../data/timeIntervalPriceChange";
 import { lineChartData } from "../../data/lineChartData";
@@ -14,9 +12,7 @@ const LineChart = (props) => {
   const [dataTargetName, setDataTargetName] = useState("");
   const [timeInterval, setTimeInterval] = useState(30);
   const [selectedMarketData, setSelectedMarketData] = useState("prices");
-  const { currency, palletType, colorTheme } = props;
-  const useStyles = makeStyles((theme) => lineChartStyles(theme, colorTheme));
-  const classes = useStyles();
+  const { currency, palletType, colorTheme, classes } = props;
   const {
     darkChartLines,
     lightChartLines,

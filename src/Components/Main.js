@@ -70,9 +70,9 @@ const Main = () => {
         .then((data) => {
           setDataListCrypto(data);
           setFixedDataTargetCrypto(data);
-        })
-        // .catch((error) => {
-        // });
+        });
+      // .catch((error) => {
+      // });
     };
     getDataOfAllCrypto();
   }, [currency]);
@@ -105,7 +105,7 @@ const Main = () => {
             />
             <Box className={classes.cryptocurrency_container}>
               <Switch>
-                <Route exact path="/cryptocurrency_market_data">
+                <Route exact path="/">
                   <MainHeading
                     title={"Cryptocurrency prices"}
                     classes={classes}
@@ -130,6 +130,7 @@ const Main = () => {
                     currencySymbol={currencySymbol}
                   />
                   <LineChart
+                    classes={classes}
                     dataTargetCryptoId={dataTargetCryptoId}
                     currency={currency}
                     palletType={palletType}

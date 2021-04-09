@@ -5,14 +5,14 @@ import { styleCurrencies } from "./Currencies/styleCurrencies";
 import { lineChartStyles } from "./LineChart/lineChartStyles";
 import { styleSearchInput } from "./SearchCrypto/styleSearchInput";
 import { colors } from "../data/colors";
-const { darkBg, lightBg } = colors;
+const { darkBg, lightBg, white, darkThemeAcentBg, lightTextSubtitle } = colors;
 
 export const mainStyles = (theme,palletType, colorTheme) => {
   const mainColor = `rgba(${colorTheme} 1)`;
   const navbarStyle = stylesNavbar(theme);
   const cryptoInfoStyle = cryptocurrencyInfoStyle(theme);
-  const lineChartStyle = lineChartStyles(theme, colorTheme);
-  const currenciesStyle = styleCurrencies(theme, mainColor);
+  const lineChartStyle = lineChartStyles(theme);
+  const currenciesStyle = styleCurrencies();
   const searchInputStyle= styleSearchInput(palletType);
   return {
     main: {
@@ -50,9 +50,20 @@ export const mainStyles = (theme,palletType, colorTheme) => {
       top: "50%",
       left: "50%",
     },
+    currency_btn: {
+      color: palletType === "light" ? darkThemeAcentBg : lightTextSubtitle,
+      "&:hover": {
+        borderColor: `rgba(${colorTheme} 1)`,
+        backgroundColor:  palletType === "light" ? white : darkThemeAcentBg,
+      },
+      [theme.breakpoints.down("xs")]: {
+        padding: "5px 10px",
+      },
+    },
     active_btn: {
       borderColor: mainColor,
       boxShadow: `0 0 0 0.1rem ${`rgba(${colorTheme} 0.5)`}`,
+      backgroundColor:  palletType === "light" ? white : darkThemeAcentBg,
     },
     ...navbarStyle,
     ...currenciesStyle,
