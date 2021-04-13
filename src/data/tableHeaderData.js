@@ -15,8 +15,13 @@ export const headerData = [
       nameOfClass: "price",
     },
     {
+      id: 'price_change_percentage_24h',
+      name: "24h Price",
+      nameOfClass: "volume",
+    },
+    {
       id: 'market_cap_change_24h',
-      name: "24h Volume",
+      name: "24h market cap",
       nameOfClass: "volume",
     },
     {

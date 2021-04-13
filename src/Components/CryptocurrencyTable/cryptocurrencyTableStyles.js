@@ -1,6 +1,6 @@
 import {colors} from '../../data/colors';
 const {priceIncrease, priceReduction} = colors;
-export const cryptocurrencyTableStyle = {
+export const cryptocurrencyTableStyles = {
     cryptoData: { 
       display: "flex",
       alignItems: "center",

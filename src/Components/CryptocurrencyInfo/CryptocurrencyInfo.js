@@ -14,8 +14,15 @@ const CryptocurrencyInfo = (props) => {
   const [coinInfo, setCoinInfo] = useState("");
   const [coinPriceByPeriod, setCoinPriceByPeriod] = useState("");
   const { market_data } = data;
-  const { palletType, currency, currencySymbol, classes } = props;
-  const converData = (data) => data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  const {
+    palletType,
+    currency,
+    currencySymbol,
+    classes,
+    hasErrorConnet,
+  } = props;
+  const converData = (data) =>
+    data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   useEffect(() => {
     const id = localStorage.getItem("id");
@@ -30,16 +37,19 @@ const CryptocurrencyInfo = (props) => {
             converData(market_data.low_24h[currency]),
             converData(market_data.high_24h[currency]),
             converData(market_data.total_volume[currency]),
-            market_data.max_supply &&
-            converData(market_data.max_supply),
+            market_data.max_supply && converData(market_data.max_supply)
           );
           const coinPriceChanges = getCoinPriceChanges(market_data, currency);
           setCoinPriceByPeriod(coinPriceChanges);
           setCoinInfo(coinData);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => hasErrorConnet(true));
     };
     getDataOfTargetCrypto(id);
+    const updateData = setInterval(() => {
+      getDataOfTargetCrypto();
+    }, 600000);
+    return () => clearInterval(updateData);
   }, [currency]);
   return (
     <Box component="section" className={classes.flex_container} width={"100%"}>

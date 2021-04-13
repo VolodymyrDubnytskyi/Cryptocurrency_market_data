@@ -21,7 +21,7 @@ const CryptoTBodyRow = (props) => {
         crypto={crypto}
         currencySymbol={currencySymbol}
       />
-      <TBodyCoinMarketData classes={classes} crypto={crypto} />
+      <TBodyCoinMarketData classes={classes} crypto={crypto}  />
     </TableRow>
   );
 };

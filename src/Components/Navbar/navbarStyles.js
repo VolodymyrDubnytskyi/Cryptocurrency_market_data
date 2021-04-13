@@ -1,4 +1,5 @@
-export const stylesNavbar = (theme) => {
+export const navbarStyles = (theme, palletType, mixins) => {
+  const { flexCenter } = mixins;
   return {
     header_container: {
       position: "fixed",
@@ -12,8 +13,7 @@ export const stylesNavbar = (theme) => {
       width: "100%",
       height: "100%",
       maxWidth: "1755px",
-      display: "flex",
-      alignItems: "center",
+      ...flexCenter,
       justifyContent: "space-between",
       padding: "0 40px",
       margin: "auto",
@@ -22,9 +22,11 @@ export const stylesNavbar = (theme) => {
       },
     },
     logo_container: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+      ...flexCenter,
+      textDecoration: "none",
+    },
+    logo_text: {
+      color: palletType === 'light' ? '#000':'#fff',
     },
     logo: {
       width: "50px",
@@ -44,15 +46,13 @@ export const stylesNavbar = (theme) => {
       },
     },
     bg_theme_btn: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+      ...flexCenter,
       [theme.breakpoints.down("xs")]: {
-        minWidth: '8px'
+        minWidth: "8px",
       },
     },
     preference_icon: {
-      minWidth: '30px'
-    }
+      minWidth: "30px",
+    },
   };
 };

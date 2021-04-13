@@ -17,11 +17,13 @@ import {
 import { mainStyles } from "./mainStyles";
 import { cryptoListUrl } from "../data/cryptoListUrl";
 import MainHeading from "./MainHeading";
+import ConnectionError from "./ConnectionError";
 
 const Main = () => {
   const [dataListCrypto, setDataListCrypto] = useState([]);
   const [dataTargetCryptoId, setDataTargetCryptoId] = useState("");
   const [fixedDataTargetCrypto, setFixedDataTargetCrypto] = useState("");
+  const [errorConnet, hasErrorConnet] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [darkState, setDarkState] = useState(false);
   const [colorTheme, setColorTheme] = useState(`145, 100, 223,`);
@@ -70,11 +72,14 @@ const Main = () => {
         .then((data) => {
           setDataListCrypto(data);
           setFixedDataTargetCrypto(data);
-        });
-      // .catch((error) => {
-      // });
+        })
+        .catch((error) => hasErrorConnet(true));
     };
     getDataOfAllCrypto();
+    const updateData = setInterval(() => {
+      getDataOfAllCrypto();
+    }, 600000);
+    return () => clearInterval(updateData);
   }, [currency]);
 
   useEffect(() => {
@@ -84,10 +89,10 @@ const Main = () => {
     color && setColorTheme(color);
     darkBg && setDarkState(JSON.parse(darkBg));
   }, []);
-
   return (
     <ThemeProvider theme={darkTheme}>
       <Router>
+        {errorConnet && <ConnectionError classes={classes} />}
         {dataListCrypto ? (
           <Box className={classes.main}>
             <CssBaseline />
@@ -124,12 +129,14 @@ const Main = () => {
                 </Route>
                 <Route path={"/dashbord"}>
                   <CryptocurrencyInfo
+                    hasErrorConnet={hasErrorConnet}
                     classes={classes}
                     palletType={palletType}
                     currency={currency}
                     currencySymbol={currencySymbol}
                   />
                   <LineChart
+                    hasErrorConnet={hasErrorConnet}
                     classes={classes}
                     dataTargetCryptoId={dataTargetCryptoId}
                     currency={currency}
@@ -141,8 +148,8 @@ const Main = () => {
             </Box>
           </Box>
         ) : (
-          <Box>
-            <CircularProgress className={classes.progresCircular} />
+          <Box className={classes.progresCircular}>
+            <CircularProgress />
           </Box>
         )}
       </Router>

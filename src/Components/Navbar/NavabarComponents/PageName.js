@@ -1,17 +1,18 @@
 import React from "react";
 import Logo from "./Logo";
-import { Box, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const PageName = (props) => {
   const { classes, title, colorTheme } = props;
-  const { logo_container } = classes;
+  const { logo_container, logo_text } = classes;
   return (
-    <Box className={logo_container}>
+    <Link to={'/'} className={logo_container}>
       <Logo classes={classes} colorTheme={colorTheme} />
-      <Typography varian="h6" component="h2">
+      <Typography varian="h6" component="h2" className={logo_text}>
         {title}
       </Typography>
-    </Box>
+    </Link>
   );
 };
 export default PageName;

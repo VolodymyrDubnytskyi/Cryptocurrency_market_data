@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LineChartBtnGroup from "./LineChartBtnGroup";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
@@ -12,7 +12,7 @@ const LineChart = (props) => {
   const [dataTargetName, setDataTargetName] = useState("");
   const [timeInterval, setTimeInterval] = useState(30);
   const [selectedMarketData, setSelectedMarketData] = useState("prices");
-  const { currency, palletType, colorTheme, classes } = props;
+  const { currency, palletType, colorTheme, classes, hasErrorConnet } = props;
   const {
     darkChartLines,
     lightChartLines,
@@ -103,7 +103,7 @@ const LineChart = (props) => {
       },
     },
   };
-
+  let isMounted = useRef(true);
   useEffect(() => {
     const id = localStorage.getItem("id");
     const getDataOfTargetCrypto = (coin, chartPeriod) => {
@@ -111,10 +111,17 @@ const LineChart = (props) => {
         `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=${currency}&days=${chartPeriod}`
       )
         .then((res) => res.json())
-        .then((data) => setDataTargetCrypto(data))
-        .catch((error) => console.log(error));
+        .then((data) => isMounted.current && setDataTargetCrypto(data))
+        .catch((error) => hasErrorConnet(true));
     };
     getDataOfTargetCrypto(id, timeInterval);
+    const updateData = setInterval(() => {
+      getDataOfTargetCrypto();
+    }, 600000);
+    return () => {
+      clearInterval(updateData);
+      isMounted.current = false;
+    };
   }, [currency, timeInterval, selectedMarketData]);
   useEffect(() => {
     const id = localStorage.getItem("id");

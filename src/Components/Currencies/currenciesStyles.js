@@ -1,4 +1,4 @@
-export const styleCurrencies = () => {
+export const currenciesStyles = () => {
   return {
     currency_btn_container: {
       width: "100%",

@@ -1,27 +1,39 @@
-import {stylesNavbar} from './Navbar/styleNavbar'
-import {cryptocurrencyTableStyle} from './CryptocurrencyTable/cryptocurrencyTableStyle';
-import { cryptocurrencyInfoStyle } from "./CryptocurrencyInfo/cryptocurrencyInfoStyle";
-import { styleCurrencies } from "./Currencies/styleCurrencies";
+import { navbarStyles } from "./Navbar/navbarStyles";
+import { cryptocurrencyTableStyles } from "./CryptocurrencyTable/cryptocurrencyTableStyles";
+import { cryptocurrencyInfoStyles } from "./CryptocurrencyInfo/cryptocurrencyInfoStyles";
+import { currenciesStyles } from "./Currencies/currenciesStyles";
 import { lineChartStyles } from "./LineChart/lineChartStyles";
 import { styleSearchInput } from "./SearchCrypto/styleSearchInput";
 import { colors } from "../data/colors";
 const { darkBg, lightBg, white, darkThemeAcentBg, lightTextSubtitle } = colors;
+const mixins = {
+  flexCenter: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  fixedCenter: {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
-export const mainStyles = (theme,palletType, colorTheme) => {
+export const mainStyles = (theme, palletType, colorTheme) => {
   const mainColor = `rgba(${colorTheme} 1)`;
-  const navbarStyle = stylesNavbar(theme);
-  const cryptoInfoStyle = cryptocurrencyInfoStyle(theme);
+  const navbarStyle = navbarStyles(theme, palletType, mixins);
+  const cryptoInfoStyle = cryptocurrencyInfoStyles(theme, mixins);
   const lineChartStyle = lineChartStyles(theme);
-  const currenciesStyle = styleCurrencies();
-  const searchInputStyle= styleSearchInput(palletType);
+  const currenciesStyle = currenciesStyles();
+  const searchInputStyle = styleSearchInput(palletType);
+  const { flexCenter, fixedCenter } = mixins;
   return {
     main: {
+      ...flexCenter,
       backgroundColor: palletType === "light" ? lightBg : darkBg,
       minHeight: "100vh",
       padding: "85px 40px 40px 40px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
       flexDirection: "column",
       [theme.breakpoints.down("sm")]: {
         padding: "85px 15px 20px 15px",
@@ -38,23 +50,22 @@ export const mainStyles = (theme,palletType, colorTheme) => {
       },
     },
     cryptocurrency_container: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+      ...flexCenter,
       flexDirection: "column",
       maxWidth: "1675px",
       width: "100%",
     },
     progresCircular: {
-      position: "fixed",
-      top: "50%",
-      left: "50%",
+      ...fixedCenter,
+    },
+    error_container: {
+      ...fixedCenter,
     },
     currency_btn: {
       color: palletType === "light" ? darkThemeAcentBg : lightTextSubtitle,
       "&:hover": {
         borderColor: `rgba(${colorTheme} 1)`,
-        backgroundColor:  palletType === "light" ? white : darkThemeAcentBg,
+        backgroundColor: palletType === "light" ? white : darkThemeAcentBg,
       },
       [theme.breakpoints.down("xs")]: {
         padding: "5px 10px",
@@ -63,12 +74,12 @@ export const mainStyles = (theme,palletType, colorTheme) => {
     active_btn: {
       borderColor: mainColor,
       boxShadow: `0 0 0 0.1rem ${`rgba(${colorTheme} 0.5)`}`,
-      backgroundColor:  palletType === "light" ? white : darkThemeAcentBg,
+      backgroundColor: palletType === "light" ? white : darkThemeAcentBg,
     },
     ...navbarStyle,
     ...currenciesStyle,
     ...searchInputStyle,
-    ...cryptocurrencyTableStyle,
+    ...cryptocurrencyTableStyles,
     ...cryptoInfoStyle,
     ...lineChartStyle,
   };
