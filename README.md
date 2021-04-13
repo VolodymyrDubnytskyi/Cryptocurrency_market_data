@@ -8,8 +8,8 @@ The functionality of the mainboard:
 - cryptocurrency logos, names, and tickers
 Above the mainboard:
 - the search line
-- the currency changer
-The user can adjust the experience with theme and font color setting. It is possible to extend the cryptocurrency number up to 20  displayed on the mainboard.
+- the currency changer <br />
+The user can adjust the experience with theme and font color setting. It is possible to extend the cryptocurrency number up to 20  displayed on the mainboard. <br />
 When clicking on any cryptocurrency, its detailed data is displayed namely the plot area with previous 24H/7D/14D/month/etc. prices/market cap.
 The web data updates every 10 minutes. Information is taken with an application programming interface intermediary.
 ![readMeImg](https://user-images.githubusercontent.com/57453386/114614328-ae6ed200-9ca4-11eb-810d-a4cf7e1f9e38.jpg)
