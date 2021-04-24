@@ -5,7 +5,7 @@ The functionality of the mainboard:
 - 24h price change
 - 24h market cap change
 - current prices
-- cryptocurrency logos, names, and tickers
+- cryptocurrency logos, names, and tickers <br />
 Above the mainboard:
 - the search line
 - the currency changer <br />
